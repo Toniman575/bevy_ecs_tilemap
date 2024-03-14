@@ -11,7 +11,7 @@ use crate::TilemapSize;
 
 /// A tile position in the tilemap grid.
 #[derive(Component, Reflect, Default, Clone, Copy, Debug, Hash, PartialEq, Eq, PartialOrd)]
-#[reflect(Component)]
+#[reflect(Component, Hash)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct TilePos {
     pub x: u32,
@@ -66,7 +66,7 @@ impl From<&TilePos> for Vec2 {
 }
 
 /// A texture index into the atlas or texture array for a single tile. Indices in an atlas are horizontal based.
-#[derive(Component, Reflect, Default, Clone, Copy, Debug, Hash)]
+#[derive(Component, Reflect, Default, Clone, Copy, Debug, Hash, Eq, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[reflect(Component)]
 pub struct TileTextureIndex(pub u32);
@@ -84,7 +84,7 @@ impl From<Color> for TileColor {
 }
 
 /// Hides or shows a tile based on the boolean. Default: True
-#[derive(Component, Reflect, Clone, Copy, Debug, Hash)]
+#[derive(Component, Reflect, Clone, Copy, Debug, Hash, PartialEq, Eq)]
 #[reflect(Component)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct TileVisible(pub bool);

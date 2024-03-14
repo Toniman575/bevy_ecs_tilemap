@@ -8,6 +8,7 @@ use crate::helpers::square_grid::staggered::StaggeredPos;
 use crate::tiles::TilePos;
 use crate::{TilemapGridSize, TilemapSize};
 use bevy::math::Vec2;
+use bevy::reflect::Reflect;
 use std::ops::{Add, Mul, Sub};
 
 /// Position for tiles arranged in a square coordinate system.
@@ -18,7 +19,7 @@ use std::ops::{Add, Mul, Sub};
 ///
 /// A `SquarePos` can be mapped to world space, and a world space position can be mapped to
 /// the tile with `SquarePos` containing said world space position.
-#[derive(Clone, Copy, Debug, Ord, PartialOrd, Eq, PartialEq, Hash)]
+#[derive(Clone, Copy, Debug, Ord, PartialOrd, Eq, PartialEq, Hash, Reflect)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct SquarePos {
     pub x: i32,
